@@ -1,0 +1,18 @@
+@import '../../styles/CommonStylesVarsAndMixins';
+
+.sur-textarea {
+    box-sizing: border-box;
+    resize: none;
+    border: $common-border;
+    font-family: inherit;
+    font-size: inherit;
+
+    &:focus {
+        @include common-focus-light-blue-shadow();
+        outline: none;
+    }
+
+    &_resizable {
+        resize: both;
+    }
+}
