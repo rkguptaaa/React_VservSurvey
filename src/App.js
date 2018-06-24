@@ -111,7 +111,8 @@ class App extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                questionScript: '<quescript><question>quw</question><option>rter</option></quescript>',
+                questionScript: this.state.question,
+                options:this.state.options,
                 date: '20/05/2018',
                 state: 1,
                 status: 'Live',
