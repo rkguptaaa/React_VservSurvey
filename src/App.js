@@ -4,6 +4,7 @@ import './App.css';
 import { Textbox } from './components/shared/textbox/Textbox';
 import { Button } from './components/shared/Button/Button';
 import { RadioButton } from './components/shared/RadioButton/RadioButton';
+import { Grid } from './components/shared/Grid/Grid';
 
 class App extends Component {
     constructor() {
@@ -37,28 +38,28 @@ class App extends Component {
         this.setState({
             //arrayvar: [...this.state.arrayvar, <div key={3} className=""><p>Option 3: <Textbox id="TextboxOption3" name="Option3" ariaLabelledBy="Option3" placeholder="Please enter possible answer here" width="500px"  /></p></div>]
             arrayvar: this.state.arrayvar.concat([
-                <div key={this.state.arrayLength+2} className="">
+                <div key={this.state.arrayLength + 2} className="">
                     <p>
-                        Option {this.state.arrayLength+2}:{' '}
+                        Option {this.state.arrayLength + 2}:{' '}
                         <Textbox
-                            id={'TextboxOption' + this.state.arrayLength+2}
+                            id={'TextboxOption' + this.state.arrayLength + 2}
                             name="Option2"
                             ariaLabelledBy="Option"
                             placeholder="Please enter possible answer here"
                             width="500px"
                             onChange={this.setOption}
-                            index={this.state.arrayLength+1}
+                            index={this.state.arrayLength + 1}
                         />
                         <RadioButton
-                            id={'radio' + this.state.arrayLength+2}
-                            value={'radio' + this.state.arrayLength+2}
-                            index={this.state.arrayLength+1}
+                            id={'radio' + this.state.arrayLength + 2}
+                            value={'radio' + this.state.arrayLength + 2}
+                            index={this.state.arrayLength + 1}
                             onChange={this.setOptionTrue}
                         />
                     </p>
                 </div>
             ]),
-            options: [...this.state.options, {answer: '', status: false}]
+            options: [...this.state.options, { answer: '', status: false }]
         });
         this.setState({
             arrayLength: this.state.arrayLength + 1
@@ -73,13 +74,12 @@ class App extends Component {
 
     setOption = (event, index) => {
         //let val = { [index - 1]: { answer: event.target.value } };
-        console.log(index)
+        console.log(index);
         let newOptions = [...this.state.options];
         newOptions[index] = { ...this.state.options[index], answer: event.target.value };
         this.setState({
             options: newOptions
         });
-        
     };
 
     setOptionTrue = index => {
@@ -87,10 +87,10 @@ class App extends Component {
         //     options: this.state.options.map((o)=> o.status===true? false : false)
         // })
 
-        let newOptions = [...this.state.options].map(function(option){
-                return {...option,  status: false}
-        })
-        
+        let newOptions = [...this.state.options].map(function(option) {
+            return { ...option, status: false };
+        });
+
         //let newOptions = [...this.state.options].map((option)=>option.status, true);
         //newOptions = { newOptions.map((option)=>option.status, false) };
         //newOptions = { ...this.state.options, status: false }; //need to make all other status false
@@ -112,7 +112,7 @@ class App extends Component {
             },
             body: JSON.stringify({
                 questionScript: this.state.question,
-                options:this.state.options,
+                options: this.state.options,
                 date: '20/05/2018',
                 state: 1,
                 status: 'Live',
@@ -156,10 +156,10 @@ class App extends Component {
                     </p>
                 </div>
                 <div>
-                {this.state.arrayvar.map(function(arrayitem){
-                    return arrayitem
-                })}
-                {/* {this.state.arrayvar} */}
+                    {this.state.arrayvar.map(function(arrayitem) {
+                        return arrayitem;
+                    })}
+                    {/* {this.state.arrayvar} */}
                 </div>
                 <div>
                     <Button id="addmoreId" name="ADD MORE" text="ADD MORE OPTION" onClick={this.addmore} />
@@ -167,6 +167,10 @@ class App extends Component {
                 <hr />
                 <div>
                     <Button id="submit" name="Save" text="SAVE" onClick={this.save} />
+                </div>
+
+                <div>
+                    <Grid />
                 </div>
             </div>
         );
