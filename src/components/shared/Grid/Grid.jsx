@@ -82,8 +82,8 @@ export class Grid extends React.Component {
                     }}
                 />
                 <br />
-                <Tips />
-                <Logo />
+                {/* <Tips />
+                <Logo /> */}
             </div>
         );
     }
